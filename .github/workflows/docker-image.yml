@@ -21,7 +21,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag codenerve/swiss-army-knife:$(date +%s) --tag codenerve/swiss-army-knife:latest
+      run: docker build . --file Dockerfile --tag codenerve/swiss-army-knife:$(date +%Y%m%d) --tag codenerve/swiss-army-knife:latest
       
     - name: Docker Push
       run: docker push codenerve/swiss-army-knife
