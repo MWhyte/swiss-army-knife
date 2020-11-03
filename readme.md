@@ -1,7 +1,10 @@
 # Swiss army knife
 
-Based on [nicolaka/netshoot](https://github.com/nicolaka/netshoot) image plus:
-- Java
+This image extends from the base: 
+[nicolaka/netshoot](https://github.com/nicolaka/netshoot) 
+and adds some additional libraries:
+
+- Java 
 - kafka
 - Kafkacat
 - Postgres
