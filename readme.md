@@ -5,7 +5,7 @@ This image extends from the base:
 and adds some additional libraries:
 
 - Java 
-- kafka
+- Kafka
 - Kafkacat
 - Postgres
 
