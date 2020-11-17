@@ -11,17 +11,17 @@ and adds some additional libraries:
 
 ## Building 
 ```
-docker build --tag codenerve/swiss-army-knife .
+docker build --tag mwhyte/swiss-army-knife .
 ```
 
 ## Running for testing
 ```
-docker run --rm -it --name test codenerve/swiss-army-knife
+docker run --rm -it --name test mwhyte/swiss-army-knife
 ```
 
 ## publishing
 ```
-docker push codenerve/swiss-army-knife
+docker push mwhyte/swiss-army-knife
 ```
 
-Pushed to dockerhub [codenerve/swiss-army-knife](https://hub.docker.com/repository/docker/codenerve/swiss-army-knife) 
+Pushed to dockerhub [mwhyte/swiss-army-knife](https://hub.docker.com/repository/docker/mrwhyte/swiss-army-knife) 
