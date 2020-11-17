@@ -31,6 +31,6 @@ RUN apk add postgresql
 
 # MySql
 RUN apk add mysql-client
-
+RUN apk add mysql
 
 CMD ["/bin/bash","-l"]
