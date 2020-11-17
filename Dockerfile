@@ -29,5 +29,8 @@ RUN apk add kafkacat
 # Postgres
 RUN apk add postgresql
 
+# MySql
+RUN apk add mysql-client
+
 
 CMD ["/bin/bash","-l"]
