@@ -4,7 +4,7 @@ FROM nicolaka/netshoot
 RUN apk update && apk add openjdk8
 
 # Kafka
-ENV KAFKA_VERSION 2.6.0
+ENV KAFKA_VERSION 2.7.0
 ENV SCALA_VERSION 2.13
 LABEL name="kafka" version=${KAFKA_VERSION}
 RUN apk add --no-cache openjdk8-jre bash docker coreutils su-exec
@@ -35,5 +35,9 @@ RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac
 RUN apk add --allow-untrusted msodbcsql17_17.6.1.1-1_amd64.apk
 RUN apk add --allow-untrusted mssql-tools_17.6.1.1-1_amd64.apk
 ENV PATH /opt/mssql-tools/bin:$PATH
+
+
+# Redis
+RUN apk --update add redis
 
 CMD ["/bin/bash","-l"]
