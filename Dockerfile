@@ -7,7 +7,7 @@ RUN apk update && apk add openjdk8
 ENV KAFKA_VERSION 2.7.0
 ENV SCALA_VERSION 2.13
 LABEL name="kafka" version=${KAFKA_VERSION}
-RUN apk add --no-cache openjdk8-jre bash docker coreutils su-exec
+RUN apk add --no-cache openjdk8-jre bash coreutils su-exec
 RUN apk add --no-cache -t .build-deps curl ca-certificates jq \
   && mkdir -p /opt \
   && mirror=$(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | jq -r '.preferred') \
@@ -40,4 +40,7 @@ ENV PATH /opt/mssql-tools/bin:$PATH
 # Redis
 RUN apk --update add redis
 
-CMD ["/bin/bash","-l"]
+
+# custom binaries
+COPY binaries/ /app/
+ENV PATH "$PATH:/app"
