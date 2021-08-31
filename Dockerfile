@@ -19,6 +19,8 @@ RUN apk add --no-cache -t .build-deps curl ca-certificates jq \
   && rm -rf /tmp/* \
   && apk del --purge .build-deps
 
+RUN apk add --no-cache openssh
+
 ENV PATH /sbin:/opt/kafka/bin/:$PATH
 WORKDIR /opt/kafka
 VOLUME ["/tmp/kafka-logs"]
