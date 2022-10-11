@@ -45,6 +45,9 @@ ENV PATH /opt/mssql-tools/bin:$PATH
 RUN apk --update add redis
 
 
+# Install grpcurl
+RUN curl -sSL "https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/grpcurl_1.8.7_linux_x86_64.tar.gz" | tar -xz -C /usr/local/bin
+
 # custom binaries
 COPY binaries/ /app/
 ENV PATH "$PATH:/app"

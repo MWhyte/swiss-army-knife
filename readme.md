@@ -8,6 +8,9 @@ and adds some additional libraries:
 - Kafka
 - Kafkacat
 - Postgres
+- Redis
+- MS Sql Server
+- gRPCurl
 
 ## Building 
 ```
