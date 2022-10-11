@@ -4,24 +4,14 @@ FROM nicolaka/netshoot
 RUN apk update && apk add openjdk8
 
 # Kafka
-ENV KAFKA_VERSION 3.1.0
-ENV SCALA_VERSION 2.13
+ARG kafka_version=3.3.1
+ENV kafka_bin_version=2.12-$kafka_version
 
-LABEL name="kafka" version=${KAFKA_VERSION}
-
-RUN apk add --no-cache openjdk8-jre bash docker coreutils su-exec
-RUN apk add --no-cache -t .build-deps curl ca-certificates jq \
-  && mkdir -p /opt \
-  && mirror=$(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | jq -r '.preferred') \
-  && curl -sSL "${mirror}kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" \
-  | tar -xzf - -C /opt \
-  && mv /opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /opt/kafka \
-  && adduser -DH -s /sbin/nologin kafka \
-  && chown -R kafka: /opt/kafka \
-  && rm -rf /tmp/* \
-  && apk del --purge .build-deps
-
-RUN apk add --no-cache openssh
+RUN apk add --no-cache --update-cache --virtual build-dependencies curl ca-certificates \
+  && mkdir -p /opt/kafka \
+  && curl -SLs "https://www-eu.apache.org/dist/kafka/$kafka_version/kafka_$kafka_bin_version.tgz" | tar -xzf - --strip-components=1 -C /opt/kafka \
+  && apk del build-dependencies \
+  && rm -rf /var/cache/apk/*
 
 ENV PATH /sbin:/opt/kafka/bin/:$PATH
 WORKDIR /opt/kafka
