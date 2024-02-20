@@ -4,8 +4,8 @@ FROM nicolaka/netshoot
 RUN apk update && apk add openjdk8
 
 # Kafka
-ARG kafka_version=3.3.1
-ENV kafka_bin_version=2.12-$kafka_version
+ARG kafka_version=3.6.1
+ENV kafka_bin_version=2.13-$kafka_version
 
 RUN apk add --no-cache --update-cache --virtual build-dependencies curl ca-certificates \
   && mkdir -p /opt/kafka \
@@ -41,6 +41,8 @@ RUN curl -sSL "https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/
 # https://github.com/vadimi/grpc-client-cli
 RUN curl -L https://github.com/vadimi/grpc-client-cli/releases/download/v1.15.0/grpc-client-cli_linux_x86_64.tar.gz | tar -C /usr/local/bin -xz
 
+# Install ghz
+RUN curl -L https://github.com/bojand/ghz/releases/download/v0.117.0/ghz-linux-x86_64.tar.gz | tar -C /usr/local/bin -xz
 
 # custom binaries
 COPY binaries/ /app/
